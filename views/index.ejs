@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<title>Snow Melt Controller</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
+	<link rel="stylesheet" href="/static/css/main.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+	<div class="container">
+		<% include ../views/partials/header %>
+
+		<!--<p><%= JSON.stringify(heater) %></p>-->
+		<div class="statusHeader">Heater status</div>
+		<input id="HeaterSwitch" type="checkbox" class="none" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+	</div>
+	<!--Jquery needed by bootstrap unfortunately...-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+	<script src="/static/js/index.js"></script>
+	<script>
+		window.heater = <%- JSON.stringify(heater) %>;
+		console.log(heater);
+	</script>
+</body>
+</html>
