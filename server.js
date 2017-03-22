@@ -72,15 +72,15 @@ app.get('/index', checkUserIsAuthenticated, function(req, res) {
 //READ Status
 app.get('/status', checkUserIsAuthenticated, function(req, res){
 	const heater = new Heater();
-	res.json(heater.getStatus());
+	res.json(heater.getLEDStatus());
 });
 
 //WRITE Status
 app.post('/status', checkUserIsAuthenticated, function(req, res){
 	const reqBody = JSON.parse(req.body);
 	const heater = new Heater();
-	heater.setStatus(reqBody.status);
-	res.json(heater.getStatus());
+	heater.setLEDStatus(reqBody.status);
+	res.json(heater.getLEDStatus());
 });
 
 //END routes
@@ -88,4 +88,4 @@ app.post('/status', checkUserIsAuthenticated, function(req, res){
 https.createServer({
 	key: fs.readFileSync('ssl/key.pem'),
 	cert: fs.readFileSync('ssl/cert.pem')
-}, app).listen(3000);
+}, app).listen(3000, "0.0.0.0");
