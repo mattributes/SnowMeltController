@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Snow Melt Controller</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
@@ -11,8 +12,6 @@
 <body>
 	<div class="container">
 		<% include ../views/partials/header %>
-
-		<!--<p><%= JSON.stringify(heater) %></p>-->
 		<div class="statusHeader">Heater status</div>
 		<input id="HeaterSwitch" type="checkbox" class="none" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
 	</div>
@@ -23,8 +22,10 @@
 
 	<script src="/static/js/index.js"></script>
 	<script>
-		window.heater = <%- JSON.stringify(heater) %>;
-		console.log(heater);
+
+		window.SnowMeltController = {};
+		SnowMeltController.HeaterStatus = <%- JSON.stringify(heaterStatusObj) %>;
+
 	</script>
 </body>
 </html>

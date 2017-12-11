@@ -26,10 +26,10 @@ $(document).on('ready', function(){
 
 	const heaterSwitch = $('#HeaterSwitch');
 
-	console.log(window.heater.status)
+	console.log(window.SnowMeltController.HeaterStatus);
 
 	//window.heater obj is rendered to page at request
-	heaterSwitch.bootstrapToggle(window.heater.status ? 'on' : 'off');
+	heaterSwitch.bootstrapToggle(window.SnowMeltController.HeaterStatus.status ? 'on' : 'off');
 
 	//ready to show
 	//heaterSwitch.removeClass("none");

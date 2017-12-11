@@ -50,6 +50,10 @@ class UserUtils {
 
 		return false;
 	}
+
+	getUserLoggedInUserName(){
+		
+	}
 }
 
 module.exports = UserUtils;

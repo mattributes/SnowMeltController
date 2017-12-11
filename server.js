@@ -13,11 +13,13 @@ const UserUtils = require('./userUtils.js');
 const userUtils = new UserUtils();
 const app = Express();
 
+const configObj = require('./config.js');
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.text());
 app.use('/static', Express.static('public'));
 app.use(session({
-	secret: 'franklingoodboy',
+	secret: configObj.sessionSecret,
 	resave: false,
 	saveUninitialized: true, 
 	cookie: {
@@ -44,7 +46,9 @@ app.get('/', function (req, res) {
 	if(userUtils.checkSession(req)){
 		res.redirect('/index');
 	}else{
-		res.render('login');
+		res.render('login', {
+			user: undefined
+		});
 	}
 });
 
@@ -58,12 +62,23 @@ app.post('/', function (req, res) {
 	}
 });
 
+app.get('/logout', function(req, res){
+	req.session.destroy();
+
+	res.render('login', {
+		user: undefined
+	});
+});
+
 app.get('/index', checkUserIsAuthenticated, function(req, res) {
 	const heater = new Heater();
 	const status = heater.getStatus();
 
 	res.render('index', {
-		heater : {
+		user: {
+			name: req.session.user
+		},
+		heaterStatusObj : {
 			status: status
 		}
 	});
@@ -72,15 +87,15 @@ app.get('/index', checkUserIsAuthenticated, function(req, res) {
 //READ Status
 app.get('/status', checkUserIsAuthenticated, function(req, res){
 	const heater = new Heater();
-	res.json(heater.getLEDStatus());
+	res.json(heater.getStatus());
 });
 
 //WRITE Status
 app.post('/status', checkUserIsAuthenticated, function(req, res){
 	const reqBody = JSON.parse(req.body);
 	const heater = new Heater();
-	heater.setLEDStatus(reqBody.status);
-	res.json(heater.getLEDStatus());
+	heater.setStatus(reqBody.status);
+	res.json(heater.getStatus());
 });
 
 //END routes

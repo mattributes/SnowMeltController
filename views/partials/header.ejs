@@ -1,1 +1,12 @@
 <h1>Snow Melt Controller</h1>
+
+
+<% if (user){ %>
+    <div>
+        <span>Logged in as</span>
+        <span class="userName">
+            <%- user.name %>
+        </span>
+        <a href='/logout'>Logout</a>
+    </div>
+<% } %>
