@@ -5,6 +5,14 @@
 	font-weight:bold;
 }
 
-.toggle{
+#HeaterInputControls{
+	display:flex;
+	flex-direction:row;
 	margin-top:10px;
+}
+
+#HeaterInputControls input{
+	display:inline-block;
+	width:60px;
+	margin: 0 5px 0 10px;
 }

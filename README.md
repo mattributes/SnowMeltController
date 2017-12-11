@@ -21,8 +21,6 @@ Heater state is kept in memory, soon the state will be read from the actually he
 ## TODOs
 Move session state to DB
 Read/Write from heater
-Logout
-Encapsulated Heater API
 History (in DB)
 Instructions/Rules
 	Get ALL rules

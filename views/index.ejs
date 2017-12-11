@@ -13,7 +13,15 @@
 	<div class="container">
 		<% include ../views/partials/header %>
 		<div class="statusHeader">Heater status</div>
-		<input id="HeaterSwitch" type="checkbox" class="none" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+		<div id="HeaterInputControls">
+			<input id="HeaterSwitch" type="checkbox" class="none" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+			<form id='LoginForm' class="form-signin">
+				<label for="TimeLimitInput" class="sr-only">Run for</label>
+				<input name="timelimit" type="number" id="TimeLimitInput" class="form-control" value="60">
+				<span>minutes</span>
+			</form>
+		</div>
+		
 	</div>
 	<!--Jquery needed by bootstrap unfortunately...-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

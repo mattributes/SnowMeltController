@@ -1,12 +1,11 @@
 body {
-	padding-top: 40px;
-	padding-bottom: 40px;
 	background-color: #eee;
 }
 
 h1 {
 	font-size:32px;
 	margin-top:0;
+	white-space: nowrap;
 }
 
 .container {
@@ -25,4 +24,8 @@ h1 {
 
 .userName{
 	font-weight: bold;
+}
+
+#LoginStatus{
+	align-self:flex-end;
 }
