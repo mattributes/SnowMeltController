@@ -8,6 +8,8 @@
 //this is just temporary in memory variable, will pull from hardware...
 var STATUS = true;
 
+var HEATER_EXPIRATION;
+
 class Heater {
 	constructor(){
 
@@ -16,23 +18,46 @@ class Heater {
 	//read from hardware
 	getStatus(){
 		console.log("getting status");
+		//TODO read hardware
 		return STATUS;
 	}
 
 	//set hardware
-	setStatus(isSettingOn){
+	setStatus(isSettingOn, duration){
 
 		console.log("setting status", isSettingOn);
 
+		//TODO set hardware
 		STATUS = isSettingOn;
 
 		if (isSettingOn){
 			//turn on heater
+			setTimeout(() => {
+				//TODO show time remaining!
+				console.log("DURATION ENDED TURNING OFF!!!!!!!!!!");
+				//TODO set hardware.
+				STATUS = false;
+
+			}, duration * 60 * 1000);
+
+
+			HEATER_EXPIRATION = new Date().getTime() + duration * 60 * 1000;
 
 		}else{
 			//turn off heater
-
+			HEATER_EXPIRATION = 0;
 		}
+	}
+
+	getRemainingTime(){
+		const now = new Date().getTime();
+
+		if(HEATER_EXPIRATION > now){
+			return HEATER_EXPIRATION - now;
+		}else{
+			return 0;
+		}
+
 	}
 
 	//TEMPORARY - testing led

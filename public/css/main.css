@@ -29,3 +29,7 @@ h1 {
 #LoginStatus{
 	align-self:flex-end;
 }
+
+#LoginStatus a{
+	margin-left:5px;
+}

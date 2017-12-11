@@ -12,14 +12,15 @@
 <body>
 	<div class="container">
 		<% include ../views/partials/header %>
-		<div class="statusHeader">Heater status</div>
 		<div id="HeaterInputControls">
 			<input id="HeaterSwitch" type="checkbox" class="none" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
-			<form id='LoginForm' class="form-signin">
-				<label for="TimeLimitInput" class="sr-only">Run for</label>
-				<input name="timelimit" type="number" id="TimeLimitInput" class="form-control" value="60">
+			<div id='DurationForm'>
+				<label for="DurationInput" class="sr-only">Run for</label>
+				<input name="timelimit" type="number" id="DurationInput" class="form-control" value="60">
 				<span>minutes</span>
-			</form>
+			</div>
+			<div id="TimeRemaining">0
+			</div>
 		</div>
 		
 	</div>

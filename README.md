@@ -19,15 +19,10 @@ Heater state is kept in memory, soon the state will be read from the actually he
 3. Accept cert
 
 ## TODOs
-Move session state to DB
-Read/Write from heater
-History (in DB)
-Instructions/Rules
-	Get ALL rules
-	Set rule
-	rule name | time created | created by
 
-...many more
+Show time remaining.
+Redirect better on 403.
+
 
 ## Production readiness
 Buy SSL cert? Maybe the self-signed cert will be sufficient?

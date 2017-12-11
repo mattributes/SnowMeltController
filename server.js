@@ -15,6 +15,8 @@ const app = Express();
 
 const configObj = require('./config.js');
 
+const heater = new Heater();
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.text());
 app.use('/static', Express.static('public'));
@@ -71,7 +73,7 @@ app.get('/logout', function(req, res){
 });
 
 app.get('/index', checkUserIsAuthenticated, function(req, res) {
-	const heater = new Heater();
+	
 	const status = heater.getStatus();
 
 	res.render('index', {
@@ -86,17 +88,22 @@ app.get('/index', checkUserIsAuthenticated, function(req, res) {
 
 //READ Status
 app.get('/status', checkUserIsAuthenticated, function(req, res){
-	const heater = new Heater();
 	res.json(heater.getStatus());
 });
 
 //WRITE Status
 app.post('/status', checkUserIsAuthenticated, function(req, res){
 	const reqBody = JSON.parse(req.body);
-	const heater = new Heater();
-	heater.setStatus(reqBody.status);
+	heater.setStatus(reqBody.status, reqBody.duration);
 	res.json(heater.getStatus());
 });
+
+//GET reaming time
+app.get('/remainingTime', checkUserIsAuthenticated, function(req, res){
+	res.json(heater.getRemainingTime());
+});
+
+
 
 //END routes
 
